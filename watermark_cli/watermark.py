@@ -27,7 +27,7 @@ def add_watermark(
     text: str,
     size: int = 20,
     color: str = "#FFFFFF7F",  # 50% transparent white in RRGGBBAA format
-    output_format: Optional[str] = None,
+    format: Optional[str] = None,
     output_folder: Optional[str] = None,
     postfix: str = "-wm"
 ) -> str:
@@ -55,15 +55,16 @@ def add_watermark(
 
     # Prepare output path
     input_path = Path(image_path)
-    output_format = output_format or input_path.suffix[1:]
+    output_format = format or input_path.suffix[1:]
     output_name = f"{input_path.stem}{postfix}.{output_format}"
 
     if output_folder:
-        os.makedirs(output_folder, exist_ok=True)
-        output_path = os.path.join(output_folder, output_name)
+        output_dir = input_path.parent / Path(output_folder)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        output_path = output_dir / output_name
     else:
-        output_path = os.path.join(input_path.parent, output_name)
+        output_path = input_path.parent / output_name
 
     # Save image
-    img.save(output_path, format=output_format.upper())
-    return output_path
+    img.save(str(output_path), format=output_format.upper())
+    return str(output_path)

@@ -10,7 +10,7 @@ from .watermark import add_watermark
 @click.option('--text', help='Watermark text')
 @click.option('--size', type=int, help='Text size')
 @click.option('--color', help='Text color in ARGB hex format (e.g., #80FFFFFF)')
-@click.option('--output', help='Output image format')
+@click.option('--format', 'format', help='Output image format')
 @click.option('--folder', type=click.Path(), help='Output folder path')
 @click.option('--postfix', help='Output filename postfix')
 def main(
@@ -18,7 +18,7 @@ def main(
     text: Optional[str],
     size: Optional[int],
     color: Optional[str],
-    output: Optional[str],
+    format: Optional[str],
     folder: Optional[str],
     postfix: Optional[str]
 ):
@@ -35,7 +35,7 @@ def main(
         'text': text,
         'size': size or config['size'],
         'color': color or config['color'],
-        'output_format': output or config['output'],
+        'format': format or config['format'],
         'output_folder': folder or config['folder'],
         'postfix': postfix or config['postfix']
     }

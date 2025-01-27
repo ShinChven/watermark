@@ -10,7 +10,7 @@ DEFAULT_CONFIG = {
     "text": None,
     "size": 20,
     "color": "#FFFFFF7F",  # 50% transparent white in RRGGBBAA format
-    "output": None,
+    "format": None,
     "folder": None,
     "postfix": "-wm"
 }

@@ -19,7 +19,7 @@ watermark <image_path/folder_path> [OPTIONS]
 - `--text TEXT`: Watermark text (required if not configured)
 - `--size INTEGER`: Text size (default: 20)
 - `--color TEXT`: Text color in #RRGGBBAA format (e.g., #FFFFFF7F for 50% transparent white)
-- `--output TEXT`: Output image format
+- `--format TEXT`: Output image format
 - `--folder PATH`: Output folder path (relative to input file's location or absolute path)
 - `--postfix TEXT`: Output filename postfix (default: -wm)
 
@@ -39,7 +39,7 @@ watermark image.jpg --text "Copyright" --color "#000000B3"
 watermark ./images --text "Copyright" --size 30 --color "#80FF0000"
 
 # Specify output format and folder
-watermark image.jpg --text "Copyright" --output png --folder ./output
+watermark image.jpg --text "Copyright" --format png --folder ./output
 
 # Save to a subfolder of the input file's location
 watermark image.jpg --text "Copyright" --folder "watermarked"
@@ -48,7 +48,7 @@ watermark image.jpg --text "Copyright" --folder "watermarked"
 watermark image.jpg --text "Copyright" --folder "/path/to/output"
 
 # Save to a relative subfolder with format specified
-watermark image.jpg --text "Copyright" --folder "output/jpg" --output jpg
+watermark image.jpg --text "Copyright" --folder "output/jpg" --format jpg
 ```
 
 ## Configuration

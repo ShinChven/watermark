@@ -4,18 +4,18 @@ A command-line tool to add text watermarks to images.
 
 ## Installation
 
+### Install from local directory
 ```bash
-# Install from local directory
 pip install .
 ```
 
+### Install directly from GitHub
 ```bash
-# Install directly from GitHub
 pip install git+https://github.com/ShinChven/watermark.git
 ```
 
+### Upgrade to the latest version
 ```bash
-# Upgrade to the latest version
 pip install --upgrade git+https://github.com/ShinChven/watermark.git
 ```
 

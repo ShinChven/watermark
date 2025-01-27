@@ -26,7 +26,7 @@ def add_watermark(
     image_path: str,
     text: str,
     size: int = 20,
-    color: str = "#FFFFFF7F",  # 50% transparent white in RRGGBBAA format
+    color: str = "#FFFFFF26",  # 15% transparent white in RRGGBBAA format
     format: Optional[str] = None,
     output_folder: Optional[str] = None,
     postfix: str = "-wm"

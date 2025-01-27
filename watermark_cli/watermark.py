@@ -4,15 +4,15 @@ from PIL import Image, ImageDraw, ImageFont
 from typing import Optional, Tuple
 
 def hex_to_rgba(hex_color: str) -> Tuple[int, int, int, int]:
-    """Convert hex color in #RRGGBBAA or #RRGGBB format to RGBA tuple."""
+    """Convert hex color in #RRGGBBAA or #AARRGGBB or #RRGGBB format to RGBA tuple."""
     hex_color = hex_color.lstrip('#')
     if len(hex_color) == 8:
-        # RRGGBBAA format
-        red = int(hex_color[0:2], 16)
-        green = int(hex_color[2:4], 16)
-        blue = int(hex_color[4:6], 16)
-        alpha = int(hex_color[6:8], 16)
-        return (red, green, blue, alpha)
+        # AARRGGBB format
+        alpha_hex = hex_color[0:2]
+        red_hex = hex_color[2:4]
+        green_hex = hex_color[4:6]
+        blue_hex = hex_color[6:8]
+        return (int(red_hex, 16), int(green_hex, 16), int(blue_hex, 16), int(alpha_hex, 16))
     elif len(hex_color) == 6:
         # RRGGBB format (fully opaque)
         red = int(hex_color[0:2], 16)
@@ -20,7 +20,7 @@ def hex_to_rgba(hex_color: str) -> Tuple[int, int, int, int]:
         blue = int(hex_color[4:6], 16)
         return (red, green, blue, 255)
     else:
-        raise ValueError("Invalid hex color format. Use #RRGGBBAA or #RRGGBB")
+        raise ValueError("Invalid hex color format. Use #RRGGBBAA, #AARRGGBB or #RRGGBB")
 
 def add_watermark(
     image_path: str,

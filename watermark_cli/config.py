@@ -9,7 +9,6 @@ CONFIG_FILE = os.path.join(CONFIG_DIR, "config.json")
 DEFAULT_CONFIG = {
     "text": None,
     "size": 20,
-    "color": "#FFFFFF7F",  # 50% transparent white in RRGGBBAA format
     "format": None,
     "folder": None,
     "postfix": "-wm"
@@ -22,7 +21,8 @@ def load_config() -> Dict[str, Any]:
         return DEFAULT_CONFIG
 
     with open(CONFIG_FILE, 'r') as f:
-        return {**DEFAULT_CONFIG, **json.load(f)}
+        config = json.load(f)
+        return {**DEFAULT_CONFIG, **config}
 
 def save_config(config: Dict[str, Any]) -> None:
     os.makedirs(CONFIG_DIR, exist_ok=True)

@@ -9,7 +9,6 @@ from .watermark import add_watermark
 @click.argument('path', type=click.Path(exists=True))
 @click.option('--text', help='Watermark text')
 @click.option('--size', type=int, help='Text size')
-@click.option('--color', help='Text color in RGBA hex format (e.g., #FFFFFF80)')
 @click.option('--format', 'format', help='Output image format')
 @click.option('--folder', type=click.Path(), help='Output folder path')
 @click.option('--postfix', help='Output filename postfix')
@@ -17,7 +16,6 @@ def main(
     path: str,
     text: Optional[str],
     size: Optional[int],
-    color: Optional[str],
     format: Optional[str],
     folder: Optional[str],
     postfix: Optional[str]
@@ -34,12 +32,12 @@ def main(
     options = {
         'text': text,
         'size': size or config['size'],
-        'color': color or config['color'],
         'format': format or config['format'],
         'output_folder': folder or config['folder'],
         'postfix': postfix or config['postfix']
     }
 
+    # Process files
     if os.path.isfile(path):
         output_path = add_watermark(path, **options)
         click.echo(f"Watermark added: {output_path}")

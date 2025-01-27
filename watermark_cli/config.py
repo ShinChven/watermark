@@ -9,7 +9,7 @@ CONFIG_FILE = os.path.join(CONFIG_DIR, "config.json")
 DEFAULT_CONFIG = {
     "text": None,
     "size": 20,
-    "color": "#80FFFFFF",
+    "color": "#FFFFFF7F",  # 50% transparent white in RRGGBBAA format
     "output": None,
     "folder": None,
     "postfix": "-wm"

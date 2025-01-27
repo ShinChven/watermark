@@ -9,7 +9,7 @@ from .watermark import add_watermark
 @click.argument('path', type=click.Path(exists=True))
 @click.option('--text', help='Watermark text')
 @click.option('--size', type=int, help='Text size')
-@click.option('--color', help='Text color in ARGB hex format (e.g., #80FFFFFF)')
+@click.option('--color', help='Text color in RGBA hex format (e.g., #FFFFFF80)')
 @click.option('--format', 'format', help='Output image format')
 @click.option('--folder', type=click.Path(), help='Output folder path')
 @click.option('--postfix', help='Output filename postfix')

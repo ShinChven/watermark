@@ -9,18 +9,20 @@ from .watermark import add_watermark
 @click.argument('path', type=click.Path(exists=True))
 @click.option('--text', help='Watermark text')
 @click.option('--size', type=int, help='Text size')
-@click.option('--format', 'format', help='Output image format')
+@click.option('--color', type=str, help='Text color (e.g., rgba(255,255,255,0.3))')
+@click.option('--position', type=click.Choice(['center', 'top-left', 'top-right', 'bottom-left', 'bottom-right']), help='Watermark position')
 @click.option('--folder', type=click.Path(), help='Output folder path')
 @click.option('--postfix', help='Output filename postfix')
 def main(
     path: str,
     text: Optional[str],
     size: Optional[int],
-    format: Optional[str],
+    color: Optional[str],
+    position: Optional[str],
     folder: Optional[str],
     postfix: Optional[str]
 ):
-    """Add text watermark to images."""
+    """Add text watermark to images using ImageMagick."""
     config = load_config()
 
     # Merge CLI options with config
@@ -32,7 +34,8 @@ def main(
     options = {
         'text': text,
         'size': size or config['size'],
-        'format': format or config['format'],
+        'color': color or config['color'],
+        'position': position or config['position'],
         'output_folder': folder or config['folder'],
         'postfix': postfix or config['postfix']
     }
@@ -44,7 +47,7 @@ def main(
     else:
         for root, _, files in os.walk(path):
             for file in files:
-                if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
+                if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.webp')):
                     file_path = os.path.join(root, file)
                     output_path = add_watermark(file_path, **options)
                     click.echo(f"Watermark added: {output_path}")

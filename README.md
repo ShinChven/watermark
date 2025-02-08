@@ -1,8 +1,11 @@
 # Watermark CLI
 
-A command-line tool to add text watermarks to images.
+A command-line tool to add text watermarks to images using ImageMagick.
 
 ## Installation
+
+### Prerequisites
+Make sure you have ImageMagick installed on your system. You can download it from [https://imagemagick.org/](https://imagemagick.org/).
 
 ### Install from local directory
 ```bash

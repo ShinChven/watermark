@@ -27,6 +27,8 @@ def main(
     format: Optional[str]
 ):
     """Add text watermark to images using ImageMagick."""
+
+    # Load config outside the loop
     config = load_config()
 
     # Merge CLI options with config

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "watermark-cli"
-version = "0.1.0"
+version = "0.2.0"
 description = "CLI tool to add text watermarks to images"
 authors = ["ShinChven <shinchven@gmail.com>"]
 

@@ -53,12 +53,16 @@ def main(
         output_path = add_watermark(path, **options)
         click.echo(f"Watermark added: {output_path}")
     else:
-        for root, _, files in os.walk(path):
-            for file in files:
-                if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.webp')):
-                    file_path = os.path.join(root, file)
+        # Process files in the top-level directory only
+        for file in os.listdir(path):
+            file_path = os.path.join(path, file)
+            if os.path.isfile(file_path) and file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.webp')):
+                # Check if the file is already watermarked
+                if options['postfix'] not in file:
                     output_path = add_watermark(file_path, **options)
                     click.echo(f"Watermark added: {output_path}")
+                else:
+                    click.echo(f"Skipping already watermarked file: {file_path}")
 
 if __name__ == '__main__':
     main()

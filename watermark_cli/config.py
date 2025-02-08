@@ -12,7 +12,9 @@ DEFAULT_CONFIG = {
     "color": 'rgba(255,255,255,0.3)',
     "position": "center",
     "folder": None,
-    "postfix": "-wm"
+    "postfix": "-watermarked",
+    "padding": 10,
+    "format": None
 }
 
 def load_config() -> Dict[str, Any]:

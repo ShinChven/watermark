@@ -13,6 +13,8 @@ from .watermark import add_watermark
 @click.option('--position', type=click.Choice(['center', 'top-left', 'top-right', 'bottom-left', 'bottom-right']), help='Watermark position')
 @click.option('--folder', type=click.Path(), help='Output folder path')
 @click.option('--postfix', help='Output filename postfix')
+@click.option('--padding', type=int, help='Padding for corner positions')
+@click.option('--format', 'format', help='Output image format')
 def main(
     path: str,
     text: Optional[str],
@@ -20,7 +22,9 @@ def main(
     color: Optional[str],
     position: Optional[str],
     folder: Optional[str],
-    postfix: Optional[str]
+    postfix: Optional[str],
+    padding: Optional[int],
+    format: Optional[str]
 ):
     """Add text watermark to images using ImageMagick."""
     config = load_config()
@@ -36,8 +40,10 @@ def main(
         'size': size or config['size'],
         'color': color or config['color'],
         'position': position or config['position'],
+        'postfix': postfix or config['postfix'],
+        'padding': padding or config['padding'],
+        'format': format or config['format'],
         'output_folder': folder or config['folder'],
-        'postfix': postfix or config['postfix']
     }
 
     # Process files

@@ -6,16 +6,18 @@ from typing import Optional
 def add_watermark(
     image_path: str,
     text: str,
-    size: int = 20,
-    color: str = 'rgba(255,255,255,0.3)',
-    position: str = "center",
-    output_folder: Optional[str] = None,
-    postfix: str = "-wm"
+    size: int,
+    color: str,
+    position: str,
+    postfix: str,
+    padding: int,
+    format: Optional[str] = None,
+    output_folder: Optional[str] = None
 ) -> str:
     """Adds a text watermark to an image using ImageMagick."""
 
     input_path = Path(image_path)
-    output_format = input_path.suffix[1:]
+    output_format = format or input_path.suffix[1:]
     output_name = f"{input_path.stem}{postfix}.{output_format}"
 
     if output_folder:
@@ -31,16 +33,16 @@ def add_watermark(
         offset = "+0+0"
     elif position == "top-left":
         gravity = "northwest"
-        offset = "+10+10"
+        offset = f"+{padding}+{padding}"
     elif position == "top-right":
         gravity = "northeast"
-        offset = "+10+10"
+        offset = f"+{padding}+{padding}"
     elif position == "bottom-left":
         gravity = "southwest"
-        offset = "+10+10"
+        offset = f"+{padding}+{padding}"
     elif position == "bottom-right":
         gravity = "southeast"
-        offset = "+10+10"
+        offset = f"+{padding}+{padding}"
     else:
         gravity = "center"
         offset = "+0+0"

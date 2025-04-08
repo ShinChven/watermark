@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "watermark-cli"
+version = "0.2.1"
+description = "CLI tool to add text watermarks to images"
+authors = ["ShinChven <shinchven@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "^8.1.0"
+
+[tool.poetry.scripts]
+watermark = "watermark_cli.cli:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -7,7 +7,7 @@ This project, `watermark-cli`, is a command-line interface (CLI) tool developed 
 ## Core Features
 
 1.  **Text Watermarking:** Adds user-defined text onto images.
-2.  **Customization:** Allows configuration of watermark text, size, color (including transparency via RGBA or hex with alpha), position (center, corners), padding from corners, output filename postfix, and output image format.
+2.  **Customization:** Allows configuration of watermark text, size, color (including transparency via RGBA or hex with alpha), position (center, corners: `top-left`, `top-right`, `bottom-left`, `bottom-right`, and edges: `top-center`, `bottom-center`, `left-center`, `right-center`), padding from corners/edges, output filename postfix, and output image format.
 3.  **Configuration File:** Persists user preferences (like default text, color, size, etc.) in a JSON file (`~/.config/watermark-cli/config.json`). Creates this file with defaults if it does not exist.
 4.  **CLI Overrides:** Command-line arguments take precedence over settings in the configuration file.
 5.  **Input Handling:** Accepts either a single image file path or a directory path as input.

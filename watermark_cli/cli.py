@@ -10,7 +10,25 @@ from .watermark import add_watermark
 @click.option('--text', help='Watermark text')
 @click.option('--size', type=int, help='Text size')
 @click.option('--color', type=str, help='Text color (e.g., rgba(255,255,255,0.3))')
-@click.option('--position', type=click.Choice(['center', 'top-left', 'top-right', 'bottom-left', 'bottom-right']), help='Watermark position')
+@click.option(
+    "--position",
+    type=click.Choice(
+        [
+            "center",
+            "top-left",
+            "top-right",
+            "bottom-left",
+            "bottom-right",
+            "top-center",      # Added
+            "bottom-center",   # Added
+            "left-center",     # Added
+            "right-center",    # Added
+        ],
+        case_sensitive=False,
+    ),
+    default=None,
+    help="Position of the watermark (overrides config).",
+)
 @click.option('--folder', type=click.Path(), help='Output folder path')
 @click.option('--postfix', help='Output filename postfix')
 @click.option('--padding', type=int, help='Padding for corner positions')
